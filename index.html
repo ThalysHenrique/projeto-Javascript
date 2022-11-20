@@ -5,51 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Average Calculator</title>
 </head>
 <body>
     <main id='tela-principal'>
-        <section class='conteudo' id='formulario'>
-            <h1>Calcular Média</h1>   
+        <section class='content' id='form'>
+            <h1>Average Calculator</h1>   
             <form action="#" method='POST' onsubmit="onFormSubmit()" >
-                <label>Nome do Aluno:</label>
-                <input type="text" placeholder="Aluno" id="aluno">
+                <label>Student's name:</label>
+                <input type="text" placeholder="Student" id="student">
             
             <div class='form-group'>
-                <label for="nota1">Nota 1:</label>
-                <input type="number" placeholder="Primeira nota" name="nota1" id="nota1" min='0.0' max='10.0' step="0.1" autofocus required onBlur='validarNumero(this)' />
+                <label for="grade1">Grade 1:</label>
+                <input type="number" placeholder="First grade" name="grade1" id="grade1" min='0.0' max='10.0' step="0.1" autofocus required onBlur='validateNumber(this)' />
             </div>
             
             <div class='form-group'>
-                <label for="nota2">Nota 2:</label>
-                <input type="number"  placeholder="Segunda nota" name="nota2" id="nota2" min='0.0' max='10.0' step="0.1" required onBlur='validarNumero(this)' />
+                <label for="grade2">Grade 2:</label>
+                <input type="number"  placeholder="Second grade" name="grade2" id="grade2" min='0.0' max='10.0' step="0.1" required onBlur='validateNumber(this)' />
             </div>
 
             <div class='form-group'>
-                <label for="nota3">Nota 3:</label>
-                <input type="number"  placeholder="Terceira nota" name="nota3" id="nota3" min='0.0' max='10.0' step="0.1" required onBlur='validarNumero(this)' />
+                <label for="grade3">Grade 3:</label>
+                <input type="number"  placeholder="Third grade" name="grade3" id="grade3" min='0.0' max='10.0' step="0.1" required onBlur='validateNumber(this)' />
             </div>
         
             <div class='form-group'>
-            <button class='botao' id='btnCalcular' type="submit">Calcular</button>
+            <button class='botao' id='btnCalculate' type="submit">Calculate</button>
             </div>
         
             <div class='form-group'>
-                <label for="media">Média:</label>
-                <input type="number" name="media" id="media" placeholder="Média" value='' readonly />
+                <label for="average">Average:</label>
+                <input type="number" name="average" id="average" placeholder="Average" value='' readonly />
             </div>
         
             <div class="form-group">
-                <input type="text" name="situacao" class="cx" id="situacao" placeholder='Situação Final' readonly />
+                <input type="text" name="situation" class="cx" id="situation" placeholder='End situation' readonly />
             </div>
             
             <div class="form_action--button">
-                <input type="submit" value="Submit">
-                <input type="reset" value="Reset">
+                <input type="submit" value="Submit"><br>
+                <input type="reset" value="Clean">
             </div>
         
         </form>
-            <p id='aviso' class=''></p>
+            <p id='warning' class=''></p>
         </section>
         </main>
 
@@ -57,13 +57,13 @@
                     <table class="list" id="infoList">
                         <thead>
                             <tr>
-                                <th>Nome do aluno</th>
-                                <th>Primeira Nota</th>
-                                <th>Segunda Nota</th>
-                                <th>Terceira nota</th>
-                                <th>Média</th>
-                                <th>Situação Final</th>
-                                <th>Apagar ou Editar</th>
+                                <th>Student's name</th>
+                                <th>First grade</th>
+                                <th>Second grade</th>
+                                <th>Third grade</th>
+                                <th>Average</th>
+                                <th>End situation</th>
+                                <th>Delete or edit</th>
                             </tr>
                         </thead>
                         <tbody>

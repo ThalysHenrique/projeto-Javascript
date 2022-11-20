@@ -1,109 +1,99 @@
-let cxNota1 = document.querySelector('#nota1')
-let cxNota2 = document.querySelector('#nota2')
-let cxNota3 = document.querySelector('#nota3')
-let cxMedia = document.querySelector('#media')
-let cxSituacao = document.querySelector('#situacao')
-// CALCULAR MEDIA
-function calcularMedia(n1, n2, n3) {
+let cxGrade1 = document.querySelector('#grade1')
+let cxGrade2 = document.querySelector('#grade2')
+let cxGrade3 = document.querySelector('#grade3')
+let cxAverage = document.querySelector('#average')
+let cxSituation = document.querySelector('#situation')
+
+function averageCalculate(n1, n2, n3) {
     return (n1 + n2 + n3) / 3
 }
-
-// DEFINIR SITUACAO FINAL COM BASE NA MEDIA
-function situacaoFinal(mediaFinal) {
-    let situacaoFinal = ''
+function endSituation(endAverage) {
+    let endSituation = ''
     
-    if (mediaFinal >= 7) {
-        situacaoFinal = 'Aprovado(a)'
-    } else if (mediaFinal <= 3) {
-        situacaoFinal = 'Reprovado(a)'
+    if (endAverage >= 7) {
+        endSituation = 'Approved'
+    } else if (endAverage <= 3) {
+        endSituation = 'Disapproved'
     } else {
-        situacaoFinal = 'Recuperação'
+        endSituation = 'Recuperation'
     }
-    return situacaoFinal;
+    return endSituation;
 }
 
-// FORMATAR A CAIXA DE SITUACAO FINAL
-function formatarSituacao(situacaoFinal) {
-    console.log('Situação Final ' + situacaoFinal)
-    switch(situacaoFinal) {
+function formatSituation(endSituation) {
+    console.log('End Situation ' + endSituation)
+    switch(endSituation) {
 
-        case 'Aprovado(a)':
-            cxSituacao.classList.remove('reprovado')
-            cxSituacao.classList.remove('recuperacao')
-            cxSituacao.classList.add('aprovado')
-            console.log('adicionar class aprovado')
+        case 'Approved':
+            cxSituation.classList.remove('disapproved')
+            cxSituation.classList.remove('recuperation')
+            cxSituation.classList.add('approved')
+            console.log('add class approved')
             break
         
-        case 'Reprovado(a)':
-            cxSituacao.classList.remove('aprovado')
-            cxSituacao.classList.remove('recuperacao')
-            cxSituacao.classList.add('reprovado')
-            console.log('adicionar class reprovado')
+        case 'Disapproved':
+            cxSituation.classList.remove('approved')
+            cxSituation.classList.remove('recuperation')
+            cxSituation.classList.add('disapproved')
+            console.log('add class disapproved')
             break
         
-        case 'Recuperação':
-            cxSituacao.classList.remove('aprovado')
-            cxSituacao.classList.remove('reprovado')
-            cxSituacao.classList.add('recuperacao')
-            console.log('adicionar class recuperacao')
+        case 'Recuperation':
+            cxSituation.classList.remove('approved')
+            cxSituation.classList.remove('disapproved')
+            cxSituation.classList.add('recuperation')
+            console.log('add class recuperation')
                 break
 
         default:
-            console.log('Situação Indefinida')
-    } // fim do switch case
+            console.log('Undefined Situation')
+    }
 
 }
 
-// VALIDAR E GERAR FLASH MESSAGE
-function validarNumero(numero) {
-    let num1 = cxNota1.value
-    let num2 = cxNota2.value
-    let num3 = cxNota3.value
+function validateNumber(number) {
+    let num1 = cxGrade1.value
+    let num2 = cxGrade2.value
+    let num3 = cxGrade3.value
     if(num1 < 0 || num1 > 10 || num2 < 0 || num2 > 10 || num3 < 0 || num3 > 10) {
-        formulario.reset() // limpar form
-        aviso.textContent = 'Digite uma nota entre 0.0 e 10.0'
-        aviso.classList.add('alerta')
+        form.reset()
+        warning.textContent = 'Enter a note between 0.0 e 10.0'
+        warning.classList.add('alert')
         setTimeout(function(){
-            aviso.textContent = ''
-            aviso.classList.remove('alerta')
+            warning.textContent = ''
+            warning.classList.remove('alert')
         }, 2000);
     }
 }
 
-// CALCULAR A MEDIA APOS O CLICK NO BOTAO
-btnCalcular.addEventListener('click', function(e) {
-    console.log('Calcular Média')
-// pegar o valor que esta dentro das caixas
-// usar metodo parseFloat p converter string p float
-    let nota1 = parseFloat(cxNota1.value)
-    let nota2 = parseFloat(cxNota2.value)
-    let nota3 = parseFloat(cxNota3.value)
-    let media = calcularMedia(nota1, nota2, nota3)
+btnCalculate.addEventListener('click', function(e) {
+    console.log('Average Calculate')
+    let grade1 = parseFloat(cxGrade1.value)
+    let grade2 = parseFloat(cxGrade2.value)
+    let grade3 = parseFloat(cxGrade3.value)
+    let average = averageCalculate(grade1, grade2, grade3)
     
-    console.log(nota1)
-    console.log(nota2)
-    console.log(nota3)
-    console.log(media)
+    console.log(grade1)
+    console.log(grade2)
+    console.log(grade3)
+    console.log(average)
 
-    if(isNaN(media) || media < 0) {
-        console.log("Não é um número")
-        cxSituacao.value = ''
+    if(isNaN(average) || average < 0) {
+        console.log("Isn't a number!")
+        cxSituation.value = ''
     } else {
-        cxMedia.value = parseFloat(media)
-        cxSituacao.value = situacaoFinal(media)
-        formatarSituacao(situacaoFinal(media))
+        cxAverage.value = parseFloat(average)
+        cxSituation.value = endSituation(average)
+        formatSituation(endSituation(average))
     }
     e.preventDefault()
 })
 
-// APOS LIMPAR TIRAR AS CLASS DA CX SITUACAO
-btnLimpar.addEventListener('click', function() {
-    cxSituacao.classList.remove('aprovado')
-    cxSituacao.classList.remove('reprovado')
-    cxSituacao.classList.remove('recuperacao')
+btnClean.addEventListener('click', function() {
+    cxSituation.classList.remove('approved')
+    cxSituation.classList.remove('disapproved')
+    cxSituation.classList.remove('recuperation')
 })
-
-
 
 var selectedRow = null
 
@@ -119,74 +109,69 @@ function onFormSubmit(e) {
         resetForm();    
 }
 
-//Retrieve the data
 function readFormData() {
     var formData = {};
-    formData["aluno"] = document.getElementById("aluno").value;
-    formData["nota1"] = document.getElementById("nota1").value;
-    formData["nota2"] = document.getElementById("nota2").value;
-    formData["nota3"] = document.getElementById("nota3").value;
-    formData["media"] = document.getElementById("media").value;
-    formData["situacao"] = document.getElementById("situacao").value;
+    formData["student"] = document.getElementById("student").value;
+    formData["grade1"] = document.getElementById("grade1").value;
+    formData["grade2"] = document.getElementById("grade2").value;
+    formData["grade3"] = document.getElementById("grade3").value;
+    formData["average"] = document.getElementById("average").value;
+    formData["situation"] = document.getElementById("situation").value;
     return formData;
 }
 
-//Insert the data
 function insertNewRecord(data) {
     var table = document.getElementById("infoList").getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.length);
     cell0 = newRow.insertCell(0);
-		cell0.innerHTML = data.aluno;
+		cell0.innerHTML = data.student;
     cell1 = newRow.insertCell(1);
-		cell1.innerHTML = data.nota1;
+		cell1.innerHTML = data.grade1;
     cell2 = newRow.insertCell(2);
-		cell2.innerHTML = data.nota2;
+		cell2.innerHTML = data.grade2;
     cell3 = newRow.insertCell(3);
-		cell3.innerHTML = data.nota3;
+		cell3.innerHTML = data.grade3;
     cell4 = newRow.insertCell(4);
-		cell4.innerHTML = data.media;
+		cell4.innerHTML = data.average;
     cell4 = newRow.insertCell(5);
-		cell4.innerHTML = data.situacao;
+		cell4.innerHTML = data.situation;
     cell4 = newRow.insertCell(6);
         cell4.innerHTML = `<button onClick="onEdit(this)">Edit</button> <button onClick="onDelete(this)">Delete</button>`;
 }
 
-//Edit the data
 function onEdit(td) {
     selectedRow = td.parentElement.parentElement;
-    document.getElementById("aluno").value = selectedRow.cells[0].innerHTML;
-    document.getElementById("nota1").value = selectedRow.cells[1].innerHTML;
-    document.getElementById("nota2").value = selectedRow.cells[2].innerHTML;
-    document.getElementById("nota3").value = selectedRow.cells[3].innerHTML;
-    document.getElementById("media").value = selectedRow.cells[4].innerHTML;
-    document.getElementById("situacao").value = selectedRow.cells[5].innerHTML;
+    document.getElementById("student").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("grade1").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("grade2").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("grade3").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("average").value = selectedRow.cells[4].innerHTML;
+    document.getElementById("situation").value = selectedRow.cells[5].innerHTML;
 }
 
 function updateRecord(formData) {
-    selectedRow.cells[0].innerHTML = formData.aluno;
-    selectedRow.cells[1].innerHTML = formData.nota1;
-    selectedRow.cells[2].innerHTML = formData.nota2;
-    selectedRow.cells[3].innerHTML = formData.nota3;
-    selectedRow.cells[4].innerHTML = formData.media;
-    selectedRow.cells[5].innerHTML = formData.situacao;
+    selectedRow.cells[0].innerHTML = formData.student;
+    selectedRow.cells[1].innerHTML = formData.grade1;
+    selectedRow.cells[2].innerHTML = formData.grade2;
+    selectedRow.cells[3].innerHTML = formData.grade3;
+    selectedRow.cells[4].innerHTML = formData.average;
+    selectedRow.cells[5].innerHTML = formData.situation;
 }
 
-//Delete the data
 function onDelete(td) {
-    if (confirm('Tem certeza que deseja apagar?')) {
+    if (confirm('Are you sure you want to delete?')) {
         row = td.parentElement.parentElement;
         document.getElementById('infoList').deleteRow(row.rowIndex);
         resetForm();
     }
 }
 
-//Reset the data
 function resetForm() {
-    document.getElementById("aluno").value = '';
-    document.getElementById("nota1").value = '';
-    document.getElementById("nota2").value = '';
-    document.getElementById("nota3").value = '';
-    document.getElementById("media").value = '';
-    document.getElementById("situacao").value = '';
+    document.getElementById("student").value = '';
+    document.getElementById("grade1").value = '';
+    document.getElementById("grade2").value = '';
+    document.getElementById("grade3").value = '';
+    document.getElementById("average").value = '';
+    document.getElementById("situation").value = '';
     selectedRow = null;
 }

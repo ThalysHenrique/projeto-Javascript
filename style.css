@@ -10,12 +10,13 @@ body{
 }
 
 table{    
-    box-shadow: #ce3f3f 0px 1px 35px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    box-shadow: rgba(2, 53, 75, 0.493) 0px 1px 35px, rgba(228, 5, 5, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
     background: rgba(2, 53, 75, 0.493);
     color: #fff;
 }
 
 table.list{
+    padding: 10px;
     width: 50%;
     margin-left: 25rem;
     border-radius: 0.5rem;
@@ -37,7 +38,7 @@ td{
 }
 
 tr:nth-child(even), table.list thread> tr{
-    background-color: rgba(163, 15, 15, 0.493);
+    background-color: hwb(0 4% 7% / 0.911);
 }
 
 input[type="number"],[type="text"]{
@@ -52,8 +53,8 @@ input[type="text"]{
     margin-right: 4rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#situacao{
-    margin-left: 7.5rem;
+#situation{
+    margin-left: 8.8rem;
 }
 
 input[type="submit"],input[type="reset"]{
@@ -81,7 +82,7 @@ button{
 }
 
 button:hover{
-    background:#990a0a ;
+    background:hwb(0 4% 7% / 0.911);
 }
 form{
     text-align: center;
@@ -90,16 +91,15 @@ form{
 h1{
     margin-left: 4rem;
     letter-spacing: 7px;
-    color: white;
+    color: hwb(0 4% 7% / 0.911);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding-bottom: 2rem;
     text-align: center;
-   
+    text-decoration: underline;
 }
 label{
-    color: rgb(129, 10, 10);
-    font-size: 0.8rem;
+    color: hwb(0 4% 7% / 0.911);
+    font-size: 1.2rem;
     font-weight: 700;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
