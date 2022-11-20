@@ -1,4 +1,4 @@
------------- Projeto da Faculdade ------------
+Projeto da Faculdade
 Matéria: Programação Web
 Aluno: Thalys Henrique
 Ferramentas: HTML, CSS e Javascript
